@@ -197,4 +197,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 
+bindsym $mod+m exec i3-input -F 'rename workspace to "'`i3-msg -t get_workspaces | jq '.[] | select(.visible == true)' | jq .num`': %s"' -P "new name? "
+
+
 
