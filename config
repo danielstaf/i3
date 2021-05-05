@@ -199,5 +199,18 @@ exec --no-startup-id pasystray
 
 bindsym $mod+m exec i3-input -F 'rename workspace to "'`i3-msg -t get_workspaces | jq '.[] | select(.visible == true)' | jq .num`': %s"' -P "new name? "
 
+# Use xprop to find out class
+assign [class="Code"] → number 2
+assign [class="Google-chrome"] → number 3
+assign [class="Rednotebook"] → number 4
 
+exec --no-startup-id /usr/bin/google-chrome
+exec --no-startup-id /snap/bin/code
+exec --no-startup-id /usr/bin/rednotebook
+
+
+#interactive screenshot by pressing printscreen
+bindsym Print exec gnome-screenshot -i 
+#crop-area screenshot by pressing Mod + printscreen
+bindsym $mod+Print exec gnome-screenshot -a
 
